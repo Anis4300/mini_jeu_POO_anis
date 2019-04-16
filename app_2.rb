@@ -12,7 +12,7 @@ require_relative 'lib/player'
 
 	puts " "
 	
-	sleep 2
+	sleep 1.5
 
 	puts "Quel est ton prénom?"
 	print ">"
