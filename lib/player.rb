@@ -1,17 +1,17 @@
 class Player
-	attr_accessor :name, :life_points
+	attr_accessor :name, :life_points #read & write
 
 	def initialize(name)
 		@name = name
-		@life_points = 10
+		@life_points = 10 
 	end
 
 	def show_state
-		puts "#{@name} a #{life_points} points de vie."
+		puts "#{@name} a #{life_points} points de vie."  #Etat des PV des joueurs
 	end
 	
 	def gets_damage (damages)
-		@life_points = @life_points - damages
+		@life_points = @life_points - damages #dommages subis 
 	
 		if @life_points < 1 
 

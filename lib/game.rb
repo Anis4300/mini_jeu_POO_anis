@@ -3,8 +3,8 @@ require_relative "player"
 class Game
 	attr_accessor :human_player, :enemies
 
-	def initialize(name, human_player, enemies)
-		@human_player = human_player
+	def initialize(name)
+		@human_player = HumanPlayer.new(name)
 		@enemies = []
 	end
 
@@ -37,13 +37,13 @@ class Game
 	end
 
 	def menu_choice
-		input = gets.chomp.to_s
+		input = gets.chomp
 
 			if input == "a" 
 				human_player.search_weapon
 			elsif input == "s"
 				human_player.search_health_pack
-			elsif input.is_a? Integer == true
+			elsif input >= 0
 				human_player.attacks(@enemies[input])
 				if @enemies[input].life_points < 0
 				kill_player(@enemies[input])
@@ -72,9 +72,9 @@ class Game
 	def create_enemies(number_enemies)
 	enemies_names = ["tom", "jean", "lea", "Edris", "Juliane", "Adaline", "Haley","Shantae", "Karol", "Marcelo", "Misty", "Alaine", "Modesto", "Karmen",   
 	"Micha", "Elijah", "Nettie", "Zandra", "Isidra", "Grace", "Zachery", "Elza", "Danelle"]	
-		number_enemies.times do
-			player=Player.new(rand(enemies_names))
-			@enemies << player	
+		number_enemies.to_i.times do
+			player=Player.new(enemies_names.sample(1))
+			@enemies << player
 		end
 	end
 	
